@@ -1,0 +1,17 @@
+<ion-view hide-nav-bar="true" hide-back-button="true">
+  <ion-content scroll="false" class="login-card bg-color">
+    <div class="card">
+      <div class="item item-text-wrap">
+          <label class="item item-input">
+            <input type="text" placeholder="Username" ng-model="data.username">
+          </label>
+          <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="data.password">
+          </label>
+        <div class="pading-button">
+          <button class="button button-block color-buton-login" ng-click="login(data)">Login</button>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

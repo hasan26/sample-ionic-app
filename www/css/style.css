@@ -1,0 +1,40 @@
+/* Empty. Add your own CSS if you like */
+
+.login-card {
+  padding-top: 50%;
+}
+
+.color-buton-login{
+  border-color: transparent;
+  background-color: #0cb6cd;
+  color: #fff;
+}
+
+.bg-color{
+  background-color: #25344c;
+}
+.pading-button{
+  padding-top: 40px;
+}
+
+.pading-table{
+  margin: 5px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.header-color{
+  background: #25344c !important
+}
+
+.title.title-center.header-item {
+  background-color:#F38023!important;
+margin:0px!important;
+  margin-left:0px!important;
+  color: #ffffff!important;
+  width: 100%;
+}
