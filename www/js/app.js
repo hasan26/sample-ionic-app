@@ -61,18 +61,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.drink', {
+    url: '/drink',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+      'tab-drink': {
+        templateUrl: 'templates/tab-drink.html',
         controller: 'AccountCtrl'
       }
     }
-  });
-
-  //$urlRouterProvider.otherwise('/login');
+  })
+    .state('tab.drink-detail', {
+      url: '/drink/:dataDrink',
+      views: {
+        'tab-drink': {
+          templateUrl: 'templates/drink-detail.html',
+          controller: 'DrinkDetailCtrl'
+        }
+      }
+    });
   $urlRouterProvider.otherwise('/login');
 
 });

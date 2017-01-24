@@ -1,13 +1,51 @@
 <ion-view>
   <ion-nav-bar class="bar header-color" ></ion-nav-bar>
   <ion-content scroll="true" class="padding">
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="meja in dataMeja" type="item-text-wrap">
-        <img ng-src="img/meja.png">
-        <p>{{meja.title}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+    <div class="list">
+      <div class="item item-divider">
+        Table
+      </div>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Number Tables</span>
+        <input ng-model="orderField.meja"  type="text" placeholder="Number Tables">
+      </label>
+    </div>
+    <div class="list">
+      <div class="item item-divider">
+        Foods
+      </div>
+      <div class="item item-button-right" ng-repeat="food in foods">
+        {{food.name}}
+        <button ng-click="removeFoodMenu(food.noRow)" class="button" style="margin-right: 90px;">
+          <i class="icon ion-minus-circled"></i>
+        </button>
+        <button class="button" style="margin-right: 50px;">
+          <a> {{food.qty}} </a>
+        </button>
+        <button ng-click="addFoodMenu(food.noRow)" class="button ">
+          <i class="icon ion-plus-circled"></i>
+        </button>
+      </div>
+      </div>
+      <div class="list">
+        <div class="item item-divider">
+          Drinks
+        </div>
+        <div class="item item-button-right" ng-repeat="drink in drinks">
+          {{drink.name}}
+          <button ng-click="removeDrinkMenu(drink.noRow)"  class="button" style="margin-right: 90px;">
+            <i class="icon ion-minus-circled"></i>
+          </button>
+          <button class="button" style="margin-right: 50px;">
+            <a> {{drink.qty}}  </a>
+          </button>
+          <button ng-click="addDrinkMenu(drink.noRow)"  class="button ">
+            <i class="icon ion-plus-circled"></i>
+          </button>
+        </div>
+      </div>
+    <button ng-click="placeOrder()" class="button button-full button-balanced">
+      Place Order
+    </button>
   </ion-content>
 </ion-view>

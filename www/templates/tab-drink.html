@@ -1,0 +1,13 @@
+<ion-view>
+  <ion-nav-bar class="bar header-color" ></ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="drink in drinks" type="item-text-wrap" href="#/tab/drink/{{drink}}">
+        <img ng-src="{{drink.img}}">
+        <h2>{{drink.name}}</h2>
+        <p>{{drink.detail}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
