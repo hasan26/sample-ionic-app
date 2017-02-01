@@ -43,21 +43,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.food', {
+      url: '/food',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-food': {
+          templateUrl: 'templates/tab-food.html',
+          controller: 'FoodCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.food-detail', {
+      url: '/food/:Id',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-food': {
+          templateUrl: 'templates/food-detail.html',
+          controller: 'FoodDetailCtrl'
         }
       }
     })
@@ -66,7 +66,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-drink': {
         templateUrl: 'templates/tab-drink.html',
-        controller: 'AccountCtrl'
+        controller: 'DrinkCtrl'
       }
     }
   })

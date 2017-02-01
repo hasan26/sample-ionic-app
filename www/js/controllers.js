@@ -1,8 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $http,$ionicPopup) {
+  .constant('CONF',{
+    'HOST': 'https://telukpenyu-be.herokuapp.com/'
+  })
+
+.controller('DashCtrl', function($scope, $http,$ionicPopup,CONF) {
   $scope.orderField = {};
-  $http.get('http://localhost:8000/api/menu/food').then(function (res){
+  $http.get(CONF.HOST+'api/menu/food').then(function (res){
     var row = 0;
     angular.forEach(res.data,function(val, key){
       res.data[key].qty   = 0 ;
@@ -11,7 +15,7 @@ angular.module('starter.controllers', [])
     });
     $scope.foods = res.data;
   });
-  $http.get('http://localhost:8000/api/menu/drink').then(function (res2){
+  $http.get(CONF.HOST+'api/menu/drink').then(function (res2){
     var row = 0;
     angular.forEach(res2.data,function(val, key){
       res2.data[key].qty = 0 ;
@@ -74,7 +78,7 @@ angular.module('starter.controllers', [])
     $scope.orderField.menu = menu;
     console.log($scope.orderField);
 
-    $http.post('http://localhost:8000/api/order', $scope.orderField).success(function (data) {
+    $http.post(CONF.HOST+'api/order', $scope.orderField).success(function (data) {
       $scope.showAlert('Order Success');
       $scope.orderField = {};
       $scope.resetQty();
@@ -109,21 +113,25 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ChatsCtrl', function($scope, $http) {
+.controller('FoodCtrl', function($scope, $http, CONF) {
 
-  $http.get('http://localhost:8000/api/menu/food').then(function (res){
+  $http.get(CONF.HOST+'api/menu/food').then(function (res){
     $scope.foods = res.data;
   });
 })
-  .controller('ChatDetailCtrl', function($scope, $stateParams) {
-    $scope.food=JSON.parse($stateParams.chatId);
+  .controller('FoodDetailCtrl', function($scope, $stateParams, $http, CONF) {
+    var id = $stateParams.Id;
+    $http.get(CONF.HOST+'api/menu/'+id).then(function (data){
+      $scope.food = data.data[0];
+    });
 })
-  .controller('LoginCtrl', function($scope, $http, $ionicPopup, $state) {
+  .controller('LoginCtrl', function($scope, $http, $ionicPopup, $state, CONF) {
 
     $scope.login = function(data) {
-      $http.post('http://localhost:8000/api/login',data).then(function (res){
+      $http.post(CONF.HOST+'api/login',data).then(function (res){
         if(res.data.status){
             $state.go('tab.dash');
+
         }else{
           $scope.showAlert();
         }
@@ -139,12 +147,15 @@ angular.module('starter.controllers', [])
 
   })
 
-  .controller('DrinkDetailCtrl', function($scope, $stateParams) {
-    $scope.drink=JSON.parse($stateParams.dataDrink);
+  .controller('DrinkDetailCtrl', function($scope, $stateParams, $http, CONF) {
+    var id = $stateParams.dataDrink;
+    $http.get(CONF.HOST+'api/menu/'+id).then(function (data){
+      $scope.drink = data.data[0];
+    });
   })
 
-  .controller('AccountCtrl', function($scope, $http) {
-    $http.get('http://localhost:8000/api/menu/drink').then(function (data){
+  .controller('DrinkCtrl', function($scope, $http, CONF) {
+    $http.get(CONF.HOST+'api/menu/drink').then(function (data){
       $scope.drinks = data.data;
     });
   });
